@@ -63,8 +63,9 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', mode: USE_PG ? 'po
 // ── Client statique ────────────────────────────────────────────────
 const fs = require('fs');
 const distPath = [
-  path.join(__dirname, 'client/dist'),
+  path.join(__dirname, 'client/dist'),  // Replit dev (build local)
   path.join(__dirname, 'client'),
+  path.join(__dirname),                  // Render ZIP (fichiers plats à la racine)
 ].find(p => fs.existsSync(path.join(p, 'index.html')));
 
 if (distPath) {
